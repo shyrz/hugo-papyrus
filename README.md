@@ -1,6 +1,6 @@
-# PaperModX
+# Papyrus
 
-PaperModX is a forked version of [PaperMod](https://github.com/adityatelange/hugo-PaperMod),
+**Papyrus** is a forked version of [PaperModX](https://github.com/reorx/hugo-PaperModX),
 it aims at adding new features and improving code quality,
 makes it easier to read and modify by anyone with basic knowledge of Hugo and HTML.
 
