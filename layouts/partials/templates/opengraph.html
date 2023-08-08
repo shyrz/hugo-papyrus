@@ -15,6 +15,25 @@
   {{- end }}
 {{ end }}
 
+{{ with .page }}
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:domain" content="informavo.re">
+<meta property="twitter:title" content="{{ $.pageTitle }}" />
+<meta property="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}" />
+<meta property="twitter:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
+<meta property="twitter:url" content="{{ .Permalink }}" />
+{{- if .Params.cover.image -}}
+  {{- if (eq .Params.cover.absolute true) }}
+    <meta property="twitter:image" content="{{ .Params.cover.image | absURL }}" />
+  {{- else}}
+    <meta property="twitter:image" content="{{ (path.Join .RelPermalink .Params.cover.image ) | absURL }}" />
+  {{- end}}
+{{- else }}
+  {{- range site.Params.images }}
+    <meta property="twitter:image" content="{{ . | absURL }}"/>
+  {{- end }}
+{{ end }}
+
 {{- if .IsPage }}
   {{- $iso8601 := "2006-01-02T15:04:05-07:00" -}}
   <meta property="article:section" content="{{ .Section }}" />
